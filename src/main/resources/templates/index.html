@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/common :: header" />
+<body>
+	<!-- Image and text -->
+	<div th:replace="common/common :: navbar"></div>
+
+	<div class="alert alert-info" th:if="${emailSent}">An email has
+		been sent to the email address with a password.</div>
+	
+	<div class="alert alert-info" th:if="${emailExists}" style="color:red">Email Already Exists</div>
+		
+	<div class="alert alert-info" th:if="${usernotExists}" style="color:red">Email Doesn't exists, Please create new account</div>
+
+	<div class="logincontainer">
+		<form class="form-signin login" th:action="@{/login}" method="post">
+			<h1 class="h3 mb-4 font-weight-normal">Please sign in</h1>
+			<label for="inputEmail" class="sr-only">Email address</label> <input
+				type="email" id="inputEmail" class="form-control" name ="loginmail"
+				placeholder="Email address" required autofocus> <label
+				for="inputPassword" class="sr-only">Password</label> <input name = "password"
+				type="password" id="inputPassword" class="form-control"
+				placeholder="Password" required>
+			<div th:if="${param.error != null}" style="color: red;">Incorrect
+				email or password.</div>
+			<button class="btn btn-lg btn-secondary btn-block " type="submit">Sign
+				in</button>
+			<p class="log">Create a new account?</p>
+			<p class="alrf">forgot password?</p>
+		</form>
+
+		<form class="form-signin newacc" th:action="@{/newUser}" method="post">
+			<h1 class="h3 mb-4 font-weight-normal">Create a new account</h1>
+			<label for="inputname" class="sr-only">Your Name</label> <input
+				type="text" id="inputname" class="form-control" name="name"
+				placeholder="Your name" required autofocus> <label
+				for="inputEmail" class="sr-only">Email address</label> <input
+				type="email" id="inputEmail" class="form-control" name="email"
+				placeholder="Email address" required autofocus>
+			<button class="btn btn-lg btn-secondary btn-block " type="submit">create
+				new account</button>
+			<p class="alr">Already have account? Sign in</p>
+			<p class="alrf">forgot password?</p>
+		</form>
+
+		<form class="form-signin forgot" th:action="@{/forgetPassword}" method="post">
+			<h1 class="h3 mb-4 font-weight-normal">Forget Password?</h1>
+			<label for="inputEmail" class="sr-only">Email address</label> <input
+				type="email" id="inputEmail" class="form-control" name="email"
+				placeholder="Email address" required autofocus>
+			<button class="btn btn-lg btn-secondary btn-block " type="submit">Sent Mail</button>
+			<p class="log">Create a new account?</p>
+		</form>
+
+	</div>
+
+
+
+	<div th:replace="common/common :: footer"></div>
+	<div th:replace="common/common :: scripts"></div>
+
+</body>
+</html>

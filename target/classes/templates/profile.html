@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/common :: header" />
+<body>
+	<!-- Image and text -->
+	<div th:replace="common/common :: navbar"></div>
+
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12" style="background-color: grey; color:black;">
+				welcome <span th:text="${#authentication.getPrincipal().getUsername()}"></span> You logged in successfully.</div>
+		</div>
+		
+		
+		
+		
+	</div>
+	<div class = "asf">
+		<a th:href=@{/TypingTest} class="type btn btn-lg btn-secondary btn-block"> Simple Typing Test app </a>
+	</div>
+
+
+
+	<div th:replace="common/common :: footer"></div>
+	<div th:replace="common/common :: scripts"></div>
+
+</body>
+</html>
